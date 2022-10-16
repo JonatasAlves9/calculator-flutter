@@ -39,13 +39,11 @@ class Button extends StatelessWidget {
       flex: big ? 2 : 1,
       child: TextButton(
         onPressed: () => cb(text),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.resolveWith((states) {
-            return color;
-          }),
-          overlayColor: MaterialStateProperty.resolveWith((states) {
-            return Colors.black.withOpacity(0.05);
-          }),
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.black,
+          backgroundColor: color,
+          shape: const BeveledRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(0))),
         ),
         child: Text(
           text,
