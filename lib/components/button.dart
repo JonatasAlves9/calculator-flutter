@@ -10,25 +10,35 @@ class Button extends StatelessWidget {
   final String text;
   final bool big;
   final Color color;
+  final void Function(String) cb;
 
   const Button(
-      {super.key, required this.text, this.big = false, this.color = DEFAULT});
+      {super.key,
+      required this.text,
+      this.big = false,
+      this.color = DEFAULT,
+      required this.cb});
 
   const Button.big(
-      {super.key, required this.text, this.big = true, this.color = DEFAULT});
+      {super.key,
+      required this.text,
+      this.big = true,
+      this.color = DEFAULT,
+      required this.cb});
 
   const Button.operation(
       {super.key,
       required this.text,
       this.big = false,
-      this.color = OPERATION});
+      this.color = OPERATION,
+      required this.cb});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: big ? 2 : 1,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () => cb(text),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith((states) {
             return color;
